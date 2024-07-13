@@ -13,3 +13,4 @@ jobs:
             distribution: 'temurin'
             cache: maven
         - run: echo 'setup java com sucesso'
+        - run: mvn clean test
