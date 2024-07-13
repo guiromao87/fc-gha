@@ -1,15 +1,21 @@
 name: ci
 on: [pull_request]
+
+
+
 jobs:
     checkout:
       runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          java: ["8", "17"]
       steps:
         - uses: actions/checkout@v4
         - run: echo 'código fonte baixado...'
 
         - uses: actions/setup-java@v3
           with:
-            java-version: '17'
+            java-version: ${{ matrix.java }}
             distribution: 'temurin'
             cache: maven
         - run: echo 'setup java com sucesso'
